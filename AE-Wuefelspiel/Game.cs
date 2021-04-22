@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace AE_Wuefelspiel
 {
@@ -12,7 +8,7 @@ namespace AE_Wuefelspiel
         public const int MAX_DICES = 3;
         public const int MIN_DICES = 2;
 
-        public static void Splash_Input()
+        public static void Splash_Output()
         {
             Console.Clear();
             Console.WriteLine("Willkommen beim Wuerfelspiel!");
@@ -20,7 +16,7 @@ namespace AE_Wuefelspiel
             Console.WriteLine("Tippe Ja ein um zu Spielen, Tippe Nein ein um das Spiel zu verlassen!");
         }
 
-        public static void Game_Input()
+        public static void Game_Output()
         {
             Console.Clear();
             Console.WriteLine("Willkommen beim Wuerfelspiel!");
@@ -28,11 +24,11 @@ namespace AE_Wuefelspiel
             Console.WriteLine("Die minimale Anzahl an wuerfeln betraegt 2, die maximale Anzahl an wuerfeln betraegt 3!");
         }
 
-        public static void Main_Loop()
+        public static void Userinterface_Loop()
         {
             while(true)
             {
-                Splash_Input();
+                Splash_Output();
                 ShallPlayResult result = Shall_Play(CInput.ReadString("Bitte taetigen Sie eine Eingabe: "));
 
                 switch(result)
@@ -58,7 +54,7 @@ namespace AE_Wuefelspiel
         {
             while(true)
             {
-                Game_Input();
+                Game_Output();
 
                 int m_Dices = CInput.ReadInt("Bitte geben Sie an, mit wievielen Wuerfeln Sie spielen moechten: ");
                 int m_EyeSum = CInput.ReadInt("Bitte geben Sie an, welche Augensumme Sie erwarten: ");
@@ -141,7 +137,7 @@ namespace AE_Wuefelspiel
 
         public static void Main(string[] args)
         {
-            Main_Loop();
+            Userinterface_Loop();
         }
     }
 }
