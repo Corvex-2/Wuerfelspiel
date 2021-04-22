@@ -112,15 +112,19 @@ namespace AE_Wuefelspiel
             else
             {
                 int m_SumMatchCount = 0;
+                int m_SumNonDuplicate = 0;
                 for(int m_CurrentThrow = 0; m_CurrentThrow < ThrowCount; m_CurrentThrow++)
                 {
                     (int dice1, int dice2, int dice3) m_Results = (CRandom.Random(1, 6), CRandom.Random(1, 6), CRandom.Random(1, 6));
 
+                    if (m_Results.dice1 != m_Results.dice2 && m_Results.dice1 != m_Results.dice3 && m_Results.dice2 != m_Results.dice3)
+                        m_SumNonDuplicate++;
                     if ((m_Results.dice1 + m_Results.dice2 + m_Results.dice3) == EyeSum)
                         m_SumMatchCount++;
                 }
 
                 Console.WriteLine($"Die Augensumme {EyeSum} ist {m_SumMatchCount} mal vorgekommen!");
+                Console.WriteLine($"Duplikate sind {ThrowCount - m_SumNonDuplicate} mal vorgekommen.");
             }
 
             return GamePlayResult.Finished;
